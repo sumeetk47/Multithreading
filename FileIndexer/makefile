@@ -5,11 +5,13 @@ CPPFLAGS=-g
 LDLIBS=-lboost_filesystem -lboost_system -pthread
 all: fileindexer
 fileindexer: $(OBJS) 
-	$(CXX) $(LDFLAGS) -o tool Main.cpp $(LDLIBS)
+	$(CXX) $(LDFLAGS) -o ssfi Main.cpp FileIndexer.cpp FileIndexer.h $(LDLIBS)
 clean:
 	$(RM) $(OBJS)
 Main.o: 
 	Main.cpp
+FileIndexer.o:
+	FileIndexer.cpp
 distclean: 
-	clean $(RM) tool
+	clean $(RM) ssfi
 
