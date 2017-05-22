@@ -4,10 +4,10 @@ RM=rm -f
 CPPFLAGS=-g
 LDLIBS=-lboost_filesystem -lboost_system -pthread
 all: fileindexer
-fileindexer: $(OBJS) 
+fileindexer: 
 	$(CXX) $(LDFLAGS) -o ssfi Main.cpp FileIndexer.cpp FileIndexer.h $(LDLIBS)
 clean:
-	$(RM) $(OBJS)
+	$(RM) ssfi
 Main.o: 
 	Main.cpp
 FileIndexer.o:

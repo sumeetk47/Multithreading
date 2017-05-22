@@ -21,10 +21,9 @@
 	#include <algorithm>
 	#include <functional>
 	#include <sys/stat.h>
-	#include <condition_variable>
 
-	void ListFilesRecursively(const char *dir, const char* ext);
-	void WordCount(int tid);
+	void listFilesRecursively(const char *dir, const char* ext);
+	void wordCount();
 	void printTop10();
 	static inline void trim(std::string &s);
 #endif
