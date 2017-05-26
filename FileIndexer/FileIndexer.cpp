@@ -20,6 +20,10 @@ static inline void trim(std::string &s) {
 	            std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
 }
 
+bool filter(char ch ){
+	return (isalnum(ch)==0);
+}
+
 //Search for .txt files and pass the path onto consumer threads
 void listFilesRecursively(const char *dir, const char* ext)
 {    
@@ -68,13 +72,7 @@ void wordCount()
 					while(b_file>> iterate)
 					{
 						length = iterate.size();
-						for (std::size_t i=0; i<length; i++)
-							{
-	    						if (std::ispunct(iterate[i]))
-	    							{
-	        							iterate[i] = ' ';
-	    							}
-							}
+						replace_if(iterate.begin(),iterate.end(),filter,' ');
 							trim(iterate);
 							std::transform(iterate.begin(), iterate.end(), iterate.begin(), ::tolower);
 						boost::split(words, iterate, boost::is_any_of(" "), boost::token_compress_on);
